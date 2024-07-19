@@ -6,6 +6,6 @@ public class AppiumTest extends AppiumConectionConfig{
 
     @Test
     public void AppiumConnectionTest() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     }
 }
