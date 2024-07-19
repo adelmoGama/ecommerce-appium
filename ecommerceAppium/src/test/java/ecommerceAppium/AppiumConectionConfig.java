@@ -37,4 +37,10 @@ public class AppiumConectionConfig {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
+    @BeforeClass
+    public void tearDown() {
+        driver.quit();
+
+        appiumService.stop();
+    }
 }
