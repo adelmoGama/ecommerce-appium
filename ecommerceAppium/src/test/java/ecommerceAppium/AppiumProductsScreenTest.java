@@ -92,7 +92,11 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
 
         String amount = driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText();
+        String name1 = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName' and @text='PG 3']")).getText();
+        String name2 = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName' and @text='Jordan 6 Rings']")).getText();
 
+        Assert.assertEquals(name1, "PG 3");
+        Assert.assertEquals(name2, "Jordan 6 Rings");
         Assert.assertEquals(amount, "$ 275.0");
     }
 }
