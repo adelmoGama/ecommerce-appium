@@ -1,31 +1,33 @@
-Test cases for the products page:
+Test cases for the login page:
 
-Description: Validate the capacity to add search for a product successfully
-GIVEN I'm at the products screen
-AND want buy the 'Nike SFB Jungle' product
-WHEN I search for it
-THEN I should be able to scroll the screen until find it
+Description: Successful happy login scenario
+GIVEN I'm at the login screen
+AND the country where I want to shop is Poland
+AND I fill in the 'Your Name' field with 'Branca de Neve'
+AND I select the gender' 'Male'
+WHEN I click 'Let's Shop'
+THEN I should be able to enter the Products screen successfully
 
-Description: Validate the capacity to add one product to the shopping cart successfully
-GIVEN I'm at the products screen
-AND I want to buy the 'Converse All Star'
-AND I found it at the screen
-WHEN I click 'ADD TO CART'
-THEN the value associated with the shopping cart icon at the top of the page should change his value to one.
+Description: Login attempt without fill 'Your Name' field within X range characters
+GIVEN I'm at the login screen
+AND the country where I want to shop is Poland
+AND I don't fill in the 'Your Name' field
+AND I select the gender' 'Male'
+WHEN I click 'Let's Shop'
+THEN should not be able to enter and I should get an error popup message 'Please enter your name'.
 
-Description: Validate the capacity to add different products to the shopping cart successfully
-GIVEN I'm at the products screen
-AND I want to buy the 'PG 3'
-AND I click 'ADD TO CART' on his card
-AND I want to buy the 'Jordan 6 Rings' too
-WHEN I click 'ADD TO CART' on his card too
-THEN the value associated with the shopping cart icon at the top of the page should change his value to two.
+Description: Login attempt filling 'Your Name' field within X minus one characters
+GIVEN I'm at the login screen
+AND the country where I want to shop is Poland
+AND I fill in the 'Your Name' field with 'B'
+AND I select the gender 'Male'
+WHEN I click 'Let's Shop'
+THEN should not be able to enter and I should get an error popup message 'Please fill in the field at least 5 characters'.
 
-Description: Validate the final shopping cart value successfully
-GIVEN I'm at the products screen
-AND I want to buy the 'Converse All Star'
-AND I click 'ADD TO CART' on his card
-AND I want to buy the 'Air Jordan 4 Retro' too
-AND I click 'ADD TO CART' on his card too
-WHEN I click on the shopping cart icon
-THEN the value on 'Total Purchase Amount' should be '$ 215.97'
+Description: Login attempt filling 'Your Name' field within X plus one characters
+GIVEN I'm at the login screen
+AND the country where I want to shop is Poland
+AND I fill in the 'Your Name' field with '?'
+AND I select the gender 'Male'
+WHEN I click 'Let's Shop'
+THEN should not be able to enter and I should get an error popup message 'Please the maximum number of characters is 30'.

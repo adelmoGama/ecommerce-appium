@@ -1,12 +1,11 @@
 package ecommerceAppium;
 
-import ecommerceAppium.AppiumConectionConfig;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AppiumLoginTest extends AppiumConectionConfig {
+public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Test
     public void AppiumLoginSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
