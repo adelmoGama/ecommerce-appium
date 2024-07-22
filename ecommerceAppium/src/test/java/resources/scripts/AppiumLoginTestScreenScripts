@@ -1,0 +1,31 @@
+Test cases for the products page:
+
+Description: Validate the capacity to add search for a product successfully
+GIVEN I'm at the products screen
+AND want buy the 'Nike SFB Jungle' product
+WHEN I search for it
+THEN I should be able to scroll the screen until find it
+
+Description: Validate the capacity to add one product to the shopping cart successfully
+GIVEN I'm at the products screen
+AND I want to buy the 'Converse All Star'
+AND I found it at the screen
+WHEN I click 'ADD TO CART'
+THEN the value associated with the shopping cart icon at the top of the page should change his value to one.
+
+Description: Validate the capacity to add different products to the shopping cart successfully
+GIVEN I'm at the products screen
+AND I want to buy the 'PG 3'
+AND I click 'ADD TO CART' on his card
+AND I want to buy the 'Jordan 6 Rings' too
+WHEN I click 'ADD TO CART' on his card too
+THEN the value associated with the shopping cart icon at the top of the page should change his value to two.
+
+Description: Validate the final shopping cart value successfully
+GIVEN I'm at the products screen
+AND I want to buy the 'Converse All Star'
+AND I click 'ADD TO CART' on his card
+AND I want to buy the 'Air Jordan 4 Retro' too
+AND I click 'ADD TO CART' on his card too
+WHEN I click on the shopping cart icon
+THEN the value on 'Total Purchase Amount' should be '$ 215.97'
