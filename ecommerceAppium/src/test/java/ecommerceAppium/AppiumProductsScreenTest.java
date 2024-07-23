@@ -2,8 +2,11 @@ package ecommerceAppium;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class AppiumProductsScreenTest extends AppiumConectionConfig {
 
@@ -75,8 +78,6 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
 
         int numberOfProducts = driver.findElements(By.id("com.androidsample.generalstore:id/productName")).size();
 
-        System.out.println("NUMBER OF PRODUCTS: " + numberOfProducts);
-
         for(int i = 0; i < numberOfProducts; i++) {
             String productName = driver.findElements(By.id("com.androidsample.generalstore:id/productName")).get(i).getText();
 
@@ -95,8 +96,18 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
         String name1 = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName' and @text='PG 3']")).getText();
         String name2 = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName' and @text='Jordan 6 Rings']")).getText();
 
+        List<WebElement> productPrices = driver.findElements(By.id("com.androidsample.generalstore:id/productPrice"));
+
+        double productsAmount = 0.0;
+
+        for (WebElement productPrice : productPrices) {
+            String amountPrice = productPrice.getText();
+            double price = Double.parseDouble(amountPrice.substring(1));
+            productsAmount += price;
+        }
+
         Assert.assertEquals(name1, "PG 3");
         Assert.assertEquals(name2, "Jordan 6 Rings");
-        Assert.assertEquals(amount, "$ 275.0");
+        Assert.assertEquals(Double.parseDouble(amount.substring(1)), productsAmount);
     }
 }
