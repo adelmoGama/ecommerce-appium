@@ -1,9 +1,13 @@
 package ecommerceAppium;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -43,5 +47,19 @@ public class AppiumConectionConfig {
         driver.quit();
 
         appiumService.stop();
+    }
+
+    public void longPressAction(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("mobile: longClickGesture",
+                ImmutableMap.of("elementId",
+                        ((RemoteWebElement) element).getId(),
+                        "duration", 2000));
+    }
+
+    public void startActivity() {
+        ((JavascriptExecutor) driver).executeScript(
+                "mobile: startActivity", ImmutableMap.of(
+                        "intent", "95fcc3a u0 com.androidsample.generalstore/com.androidsample.generalstore.AllProductsActivity"
+                ));
     }
 }

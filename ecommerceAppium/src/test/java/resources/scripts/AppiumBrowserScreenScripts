@@ -1,0 +1,29 @@
+Test cases for the browser page:
+
+Description: Validate the capacity open the mobile browser successfully
+GIVEN I'm at the products screen
+AND I add the 'PG 3' product to the shopping cart
+AND I go to the shopping cart
+WHEN I click to search on browse
+THEN I should be able to use the browser on app
+
+Description: Validate the capacity search on mobile browser successfully
+GIVEN I'm at the products screen
+AND I add the 'PG 3' product to the shopping cart
+AND I go to the shopping cart
+AND I click to search on browse
+AND I fill search field with "Lebron James"
+WHEN I click to search
+THEN information about Lebron James need to appear on the screen
+
+Description: Validate the capacity return from the mobile browser for the app successfully
+GIVEN I'm at the products screen
+AND I add the 'PG 3' product to the shopping cart
+AND I go to the shopping cart
+AND I click to search on browse
+AND I fill search field with "Lebron James"
+AND I click to search
+AND information about Lebron James need to appear on the screen
+WHEN I click to back into app
+THEN the screen of app products needs be able to use again
+
