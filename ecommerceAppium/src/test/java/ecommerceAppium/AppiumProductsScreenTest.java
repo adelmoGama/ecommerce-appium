@@ -102,12 +102,14 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
 
         for (WebElement productPrice : productPrices) {
             String amountPrice = productPrice.getText();
-            double price = Double.parseDouble(amountPrice.substring(1));
+            double price = AppiumUtils.getFormattedAmount(amountPrice);
             productsAmount += price;
         }
 
+        Double totalAmount = AppiumUtils.getFormattedAmount(amount);
+
         Assert.assertEquals(name1, "PG 3");
         Assert.assertEquals(name2, "Jordan 6 Rings");
-        Assert.assertEquals(Double.parseDouble(amount.substring(1)), productsAmount);
+        Assert.assertEquals(totalAmount, productsAmount);
     }
 }
