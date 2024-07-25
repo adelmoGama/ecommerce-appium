@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Department name">
-<!--    <test name="First Try - Run all methods from one class">-->
-<!--        <classes>-->
-<!--            <class name="ecommerceAppium.AppiumLoginScreenTest"/>-->
-<!--            <class name="ecommerceAppium.AppiumProductsScreenTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <parameter name="clientName" value="Branca de Neve"/>
+    <test name="First Try - Run all methods from one class">
+        <classes>
+            <class name="ecommerceAppium.AppiumLoginScreenTest">
+                <methods>
+                    <include name="LoginSuccessfullyTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
 <!--    <test name="Second Try - Include and exclude methods">-->
 <!--        <classes>-->

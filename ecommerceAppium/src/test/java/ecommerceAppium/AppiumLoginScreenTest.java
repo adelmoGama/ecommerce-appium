@@ -3,24 +3,26 @@ package ecommerceAppium;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class AppiumLoginScreenTest extends AppiumConectionConfig {
+    @Parameters({"clientName"})
     @Test
-    public void LoginSuccessfullyTest() {
+    public void LoginSuccessfullyTest(String clientName) {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Poland\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Branca de Neve");
+        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys(clientName);
 
         driver.hideKeyboard();
 
         driver.findElement(By.xpath("//android.widget.RadioButton[@text='Female']")).click();
 
-        String clientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
-        String countyName = driver.findElement(By.id("android:id/text1")).getText();
+        String getClientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
+        String getCountyName = driver.findElement(By.id("android:id/text1")).getText();
 
-        Assert.assertEquals(clientName, "Branca de Neve");
-        Assert.assertEquals(countyName, "Poland");
+        Assert.assertEquals(getClientName, "Branca de Neve");
+        Assert.assertEquals(getCountyName, "Poland");
 
         driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 
