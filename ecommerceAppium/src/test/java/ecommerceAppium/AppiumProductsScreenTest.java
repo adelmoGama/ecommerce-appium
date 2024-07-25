@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AppiumProductsScreenTest extends AppiumConectionConfig {
     @Test
-    public void AppiumSearchingProductSuccessfullyTest() {
+    public void ProductSearchingSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -24,7 +24,7 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
     }
 
     @Test
-    public void AppiumAddingOneProductSuccessfullyTest() {
+    public void ProductAddingOneSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -42,7 +42,7 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
     }
 
     @Test
-    public void AppiumAddingProductsSuccessfullyTest() {
+    public void ProductsAddingSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -62,7 +62,7 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
     }
 
     @Test
-    public void AppiumShoppingCartAmountSuccessfullyTest() {
+    public void ProductsShoppingCartAmountSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -113,7 +113,7 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
     }
 
     @Test
-    public void AppiumOpeningTermsSuccessfullyTest() {
+    public void ProductsOpeningTermsSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class AppiumBrowserTest extends AppiumConectionConfig {
 
     @Test
-    public void AppiumOpeningAppBrowserSuccessfullyTest() throws InterruptedException {
+    public void BrowserOpeningAppSuccessfullyTest() throws InterruptedException {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -38,16 +38,10 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
         Thread.sleep(6000);
 
         driver.context("WEBVIEW_com.androidsample.generalstore");
-
-        driver.findElement(By.name("q")).sendKeys("Lebron James");
-        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
-
-        driver.pressKey(new KeyEvent(AndroidKey.BACK));
-        driver.context("NATIVE_APP");
     }
 
     @Test
-    public void AppiumSearchingOnAppBrowserSuccessfullyTest() throws InterruptedException {
+    public void BrowserSearchingOnAppSuccessfullyTest() throws InterruptedException {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -78,7 +72,7 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
     }
     @Test
-    public void AppiumReturningToAppBrowserSuccessfullyTest() throws InterruptedException {
+    public void BrowserReturningToAppSuccessfullyTest() throws InterruptedException {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
@@ -107,6 +101,8 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
 
         driver.findElement(By.name("q")).sendKeys("Lebron James");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+
+        Thread.sleep(6000);
 
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.context("NATIVE_APP");

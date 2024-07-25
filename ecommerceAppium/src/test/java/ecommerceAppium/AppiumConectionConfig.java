@@ -8,8 +8,7 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -23,7 +22,7 @@ public class AppiumConectionConfig {
     public AndroidDriver driver;
 
     @BeforeClass
-    public void appiumAutostartWithTheEmulator() throws URISyntaxException, MalformedURLException {
+    public void appiumAutostartTheEmulator() {
         appiumService = new AppiumServiceBuilder()
                 .withAppiumJS(new File("C://Users//USUARIO//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
                 .withIPAddress("127.0.0.1")
@@ -31,7 +30,9 @@ public class AppiumConectionConfig {
                 .build();
 
         appiumService.start();
-
+    }
+    @BeforeMethod
+    public void appiumAutostartTheDriver() throws URISyntaxException, MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setDeviceName("emulatorTest2");
@@ -43,10 +44,13 @@ public class AppiumConectionConfig {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
     @AfterClass
-    public void tearDown() {
-        driver.quit();
-
+    public void tearDownAppium() {
         appiumService.stop();
+    }
+
+    @AfterMethod
+    public void tearDownDriver() {
+        driver.quit();
     }
 
     public void longPressAction(WebElement element) {
@@ -56,10 +60,10 @@ public class AppiumConectionConfig {
                         "duration", 2000));
     }
 
-    public void startActivity() {
+    public void startActivity(String currentFocus) {
         ((JavascriptExecutor) driver).executeScript(
                 "mobile: startActivity", ImmutableMap.of(
-                        "intent", "95fcc3a u0 com.androidsample.generalstore/com.androidsample.generalstore.AllProductsActivity"
+                        "intent", currentFocus
                 ));
     }
 }

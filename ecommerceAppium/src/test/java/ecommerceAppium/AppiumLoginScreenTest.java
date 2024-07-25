@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Test
-    public void AppiumLoginSuccessfullyTest() {
+    public void LoginSuccessfullyTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Poland\"));")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Branca de Neve");
@@ -19,10 +19,10 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         String clientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
         String countyName = driver.findElement(By.id("android:id/text1")).getText();
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
-
         Assert.assertEquals(clientName, "Branca de Neve");
         Assert.assertEquals(countyName, "Poland");
+
+        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 
         String pageName = driver.findElement(By.xpath("//android.widget.TextView[@text='Products']")).getText();
 
@@ -30,7 +30,7 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
     }
 
     @Test
-    public void AppiumLoginAttemptWithoutFillingNameFieldTest() {
+    public void AttemptWithoutFillingNameFieldTest() {
         driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
 
@@ -51,9 +51,9 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
 
     // THE APPLICATION DOESN'T SET MINIMUM AND MAXIMUM VALUES TO THE NAME FIELD
 //    @Test
-//    public void AppiumLoginAttemptFillingNameFieldWith1CaracterTest() {
+//    public void LoginAttemptFillingNameFieldWith1CaracterTest() {
 //        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-//        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Poland\"));")).click();
+//        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
 //        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("v");
 //
 //        driver.hideKeyboard();
@@ -64,7 +64,7 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
 //        String countyName = driver.findElement(By.id("android:id/text1")).getText();
 //
 //        Assert.assertEquals(clientName, "v");
-//        Assert.assertEquals(countyName, "Poland");
+//        Assert.assertEquals(countyName, "Brazil");
 //
 //        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 //
