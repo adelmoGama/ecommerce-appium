@@ -66,4 +66,11 @@ public class AppiumConectionConfig {
                         "intent", currentFocus
                 ));
     }
+
+    public void justTrying(String currentFocus) {
+        ((JavascriptExecutor) driver).executeScript(
+                "mobile: startActivity", ImmutableMap.of(
+                        "intent", currentFocus
+                ));
+    }
 }
