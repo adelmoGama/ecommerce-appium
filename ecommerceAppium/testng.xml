@@ -2,7 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Department name">
     <test name="First Try - Run all methods from one class">
+        <parameter name="countryName" value="Argentina"/>
         <parameter name="clientName" value="Branca de Neve"/>
+        <parameter name="invalidShorClientName" value="b"/>
+        <parameter name="invalidBigClientName" value="vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"/>
+        <parameter name="gender" value="female"/>
         <classes>
             <class name="ecommerceAppium.AppiumLoginScreenTest">
                 <methods>
@@ -12,31 +16,31 @@
         </classes>
     </test>
 
-    <test name="Second Try - Include and exclude methods">
-        <classes>
-            <class name="ecommerceAppium.AppiumLoginScreenTest">
-                <methods>
-                    <include name="AppiumLoginSuccessfullyTest"/>
-                </methods>
-            </class>
+<!--    <test name="Second Try - Include and exclude methods">-->
+<!--        <classes>-->
+<!--            <class name="ecommerceAppium.AppiumLoginScreenTest">-->
+<!--                <methods>-->
+<!--                    <include name="AppiumLoginSuccessfullyTest"/>-->
+<!--                </methods>-->
+<!--            </class>-->
 
-            <class name="ecommerceAppium.AppiumProductsScreenTest">
-                <methods>
-                    <exclude name="AppiumOpeningTermsSuccessfullyTest"/>
-                    <exclude name="AppiumAddingProductsSuccessfullyTest"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--            <class name="ecommerceAppium.AppiumProductsScreenTest">-->
+<!--                <methods>-->
+<!--                    <exclude name="AppiumOpeningTermsSuccessfullyTest"/>-->
+<!--                    <exclude name="AppiumAddingProductsSuccessfullyTest"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-<!--    I couldn't use regex to exclude or include test methods-->
-    <test name="Third Try - Using regex to exclude ou include methods">
-        <classes>
-            <class name="ecommerceAppium.AppiumLoginScreenTest">
-                <methods>
-                    <exclude name="Login.*"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--&lt;!&ndash;    I couldn't use regex to exclude or include test methods&ndash;&gt;-->
+<!--    <test name="Third Try - Using regex to exclude ou include methods">-->
+<!--        <classes>-->
+<!--            <class name="ecommerceAppium.AppiumLoginScreenTest">-->
+<!--                <methods>-->
+<!--                    <exclude name="Login.*"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

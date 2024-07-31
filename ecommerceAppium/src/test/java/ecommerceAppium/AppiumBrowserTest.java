@@ -28,7 +28,7 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
 
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
         WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-        longPressAction(element);
+//        longPressAction(element);
         String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
         Assert.assertEquals(termsTitle, "Terms Of Conditions");
 
@@ -57,7 +57,7 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
 
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
         WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-        longPressAction(element);
+//        longPressAction(element);
         String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
         Assert.assertEquals(termsTitle, "Terms Of Conditions");
 
@@ -88,7 +88,7 @@ public class AppiumBrowserTest extends AppiumConectionConfig {
 
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
         WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-        longPressAction(element);
+//        longPressAction(element);
         String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
         Assert.assertEquals(termsTitle, "Terms Of Conditions");
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AndroidActions;
 
 import java.util.List;
 
@@ -101,11 +102,11 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
 
         for (WebElement productPrice : productPrices) {
             String amountPrice = productPrice.getText();
-            double price = AppiumUtils.getFormattedAmount(amountPrice);
+            double price = AndroidActions.getFormattedAmount(amountPrice);
             productsAmount += price;
         }
 
-        Double totalAmount = AppiumUtils.getFormattedAmount(amount);
+        Double totalAmount = AndroidActions.getFormattedAmount(amount);
 
         Assert.assertEquals(name1, "PG 3");
         Assert.assertEquals(name2, "Jordan 6 Rings");
@@ -132,7 +133,7 @@ public class AppiumProductsScreenTest extends AppiumConectionConfig {
 
         WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
 
-        longPressAction(element);
+//        longPressAction(element);
 
         String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
 

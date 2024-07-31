@@ -1,100 +1,87 @@
 package ecommerceAppium;
 
-import io.appium.java_client.AppiumBy;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class AppiumLoginScreenTest extends AppiumConectionConfig {
-    @Parameters({"clientName"})
+    @Parameters({"countryName", "clientName", "gender"})
     @Test
-    public void LoginSuccessfullyTest(String clientName) {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Poland\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys(clientName);
+    public void LoginSuccessfullyTest(String countryName, String clientName, String gender) throws InterruptedException {
+        loginScreen.setCountry(countryName);
 
-        driver.hideKeyboard();
+        loginScreen.setClientNameField(clientName);
 
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Female']")).click();
+        loginScreen.setGender(gender);
 
-        String getClientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
-        String getCountyName = driver.findElement(By.id("android:id/text1")).getText();
+        String getClientName = loginScreen.getClientNameText();
+        String getCountyName = loginScreen.getCountryNameText();
 
         Assert.assertEquals(getClientName, "Branca de Neve");
-        Assert.assertEquals(getCountyName, "Poland");
+        Assert.assertEquals(getCountyName, "Argentina");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+        loginScreen.clickLetsShopButton();
 
-        String pageName = driver.findElement(By.xpath("//android.widget.TextView[@text='Products']")).getText();
+        String pageName = loginScreen.getProductPageTitle();
 
         Assert.assertEquals(pageName, "Products");
     }
 
     @Test
-    public void AttemptWithoutFillingNameFieldTest() {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
+    public void AttemptWithoutFillingNameFieldTest(String countryName, String gender) {
+        loginScreen.setCountry(countryName);
 
-        driver.hideKeyboard();
+        loginScreen.setGender(gender);
 
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Female']")).click();
+        String getCountyName = loginScreen.getCountryNameText();
 
-        String countyName = driver.findElement(By.id("android:id/text1")).getText();
+        Assert.assertEquals(getCountyName, "Argentina");
 
-        Assert.assertEquals(countyName, "Brazil");
+        loginScreen.clickLetsShopButton();
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
-
-        String toastMessage = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+        String toastMessage = loginScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
-    // THE APPLICATION DIDN'T SET A MINIMUM VALUE TO THE NAME FIELD
     @Test(enabled = false)
-    public void LoginAttemptFillingNameFieldWith1CharacterTest() {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("v");
+    public void LoginAttemptFillingNameFieldWithOneCharacterTest(String countryName, String invalidShorClientName, String gender) {
+        loginScreen.setCountry(countryName);
 
-        driver.hideKeyboard();
+        loginScreen.setInvalidShortClientNameField(invalidShorClientName);
 
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Female']")).click();
+        loginScreen.setGender(gender);
 
-        String clientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
-        String countyName = driver.findElement(By.id("android:id/text1")).getText();
+        String getClientName = loginScreen.getClientNameText();
+        String getCountyName = loginScreen.getCountryNameText();
 
-        Assert.assertEquals(clientName, "v");
-        Assert.assertEquals(countyName, "Brazil");
+        Assert.assertEquals(getClientName, "v");
+        Assert.assertEquals(getCountyName, "Brazil");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+        loginScreen.clickLetsShopButton();
 
-        String toastMessage = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+        String toastMessage = loginScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
-    // THE APPLICATION DIDN'T SET A MAXIMUM VALUE TO THE NAME FIELD
     @Test(enabled = false)
-    public void LoginAttemptFillingNameFieldWith70CharactersTest() {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+    public void LoginAttemptFillingNameFieldWith70CharactersTest(String countryName, String invalidBigClientName, String gender) {
+        loginScreen.setCountry(countryName);
 
-        driver.hideKeyboard();
+        loginScreen.setInvalidBigClientNameField(invalidBigClientName);
 
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Female']")).click();
+        loginScreen.setGender(gender);
 
-        String clientName = driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).getText();
-        String countyName = driver.findElement(By.id("android:id/text1")).getText();
+        String getClientName = loginScreen.getClientNameText();
+        String getCountyName = loginScreen.getCountryNameText();
 
-        Assert.assertEquals(clientName, "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-        Assert.assertEquals(countyName, "Brazil");
+        Assert.assertEquals(getClientName, "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+        Assert.assertEquals(getCountyName, "Brazil");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+        loginScreen.clickLetsShopButton();
 
-        String toastMessage = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+        String toastMessage = loginScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Number of characters bigger than the maximum value - 50");
     }
