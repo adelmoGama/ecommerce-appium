@@ -9,9 +9,9 @@
         <parameter name="gender" value="female"/>
         <classes>
             <class name="ecommerceAppium.AppiumLoginScreenTest">
-                <methods>
-                    <include name="LoginSuccessfullyTest"/>
-                </methods>
+<!--                <methods>-->
+<!--                    <include name="AttemptWithoutFillingNameFieldTest"/>-->
+<!--                </methods>-->
             </class>
         </classes>
     </test>

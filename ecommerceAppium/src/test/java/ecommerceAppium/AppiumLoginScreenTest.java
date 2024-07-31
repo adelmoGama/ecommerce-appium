@@ -27,6 +27,7 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(pageName, "Products");
     }
 
+    @Parameters({"countryName", "gender"})
     @Test
     public void AttemptWithoutFillingNameFieldTest(String countryName, String gender) {
         loginScreen.setCountry(countryName);
@@ -44,6 +45,7 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
+    @Parameters({"countryName", "invalidShorClientName" ,"gender"})
     @Test(enabled = false)
     public void LoginAttemptFillingNameFieldWithOneCharacterTest(String countryName, String invalidShorClientName, String gender) {
         loginScreen.setCountry(countryName);
@@ -65,6 +67,7 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
+    @Parameters({"countryName", "invalidBigClientName" ,"gender"})
     @Test(enabled = false)
     public void LoginAttemptFillingNameFieldWith70CharactersTest(String countryName, String invalidBigClientName, String gender) {
         loginScreen.setCountry(countryName);

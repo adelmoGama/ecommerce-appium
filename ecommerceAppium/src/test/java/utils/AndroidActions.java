@@ -1,14 +1,14 @@
 package utils;
 
 import com.google.common.collect.ImmutableMap;
+import ecommerceAppium.AppiumConectionConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
-public class AndroidActions {
-    AndroidDriver driver;
+public class AndroidActions extends AppiumConectionConfig {
 
     public AndroidActions(AndroidDriver androidDriver) {
         this.driver = androidDriver;

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
 
 public class LoginScreen extends AndroidActions {
-    private final AndroidDriver driver;
+//    private final AndroidDriver driver;
 
     public LoginScreen(AndroidDriver driver) {
         super(driver);
