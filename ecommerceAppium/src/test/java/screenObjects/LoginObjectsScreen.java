@@ -8,10 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
 
-public class LoginScreen extends AndroidActions {
-//    private final AndroidDriver driver;
+public class LoginObjectsScreen extends AndroidActions {
 
-    public LoginScreen(AndroidDriver driver) {
+    public LoginObjectsScreen(AndroidDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);

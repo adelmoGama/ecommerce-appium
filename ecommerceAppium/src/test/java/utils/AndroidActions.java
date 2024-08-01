@@ -27,9 +27,9 @@ public class AndroidActions extends AppiumConectionConfig {
 
     public void startActivity(String currentFocus) {
         ((JavascriptExecutor) driver).executeScript(
-                "mobile: startActivity", ImmutableMap.of(
-                        "intent", currentFocus
-                ));
+                "mobile: startActivity",
+                ImmutableMap.of("action", "",
+                        "intent", currentFocus));
     }
     public void scrollToText(String text) {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + text + "\"));"));

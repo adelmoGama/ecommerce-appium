@@ -8,21 +8,21 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Parameters({"countryName", "clientName", "gender"})
     @Test
     public void LoginSuccessfullyTest(String countryName, String clientName, String gender) throws InterruptedException {
-        loginScreen.setCountry(countryName);
+        loginObjectsScreen.setCountry(countryName);
 
-        loginScreen.setClientNameField(clientName);
+        loginObjectsScreen.setClientNameField(clientName);
 
-        loginScreen.setGender(gender);
+        loginObjectsScreen.setGender(gender);
 
-        String getClientName = loginScreen.getClientNameText();
-        String getCountyName = loginScreen.getCountryNameText();
+        String getClientName = loginObjectsScreen.getClientNameText();
+        String getCountyName = loginObjectsScreen.getCountryNameText();
 
         Assert.assertEquals(getClientName, "Branca de Neve");
         Assert.assertEquals(getCountyName, "Argentina");
 
-        loginScreen.clickLetsShopButton();
+        loginObjectsScreen.clickLetsShopButton();
 
-        String pageName = loginScreen.getProductPageTitle();
+        String pageName = loginObjectsScreen.getProductPageTitle();
 
         Assert.assertEquals(pageName, "Products");
     }
@@ -30,17 +30,17 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Parameters({"countryName", "gender"})
     @Test
     public void AttemptWithoutFillingNameFieldTest(String countryName, String gender) {
-        loginScreen.setCountry(countryName);
+        loginObjectsScreen.setCountry(countryName);
 
-        loginScreen.setGender(gender);
+        loginObjectsScreen.setGender(gender);
 
-        String getCountyName = loginScreen.getCountryNameText();
+        String getCountyName = loginObjectsScreen.getCountryNameText();
 
         Assert.assertEquals(getCountyName, "Argentina");
 
-        loginScreen.clickLetsShopButton();
+        loginObjectsScreen.clickLetsShopButton();
 
-        String toastMessage = loginScreen.getToastMessage();
+        String toastMessage = loginObjectsScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
@@ -48,21 +48,21 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Parameters({"countryName", "invalidShorClientName" ,"gender"})
     @Test(enabled = false)
     public void LoginAttemptFillingNameFieldWithOneCharacterTest(String countryName, String invalidShorClientName, String gender) {
-        loginScreen.setCountry(countryName);
+        loginObjectsScreen.setCountry(countryName);
 
-        loginScreen.setInvalidShortClientNameField(invalidShorClientName);
+        loginObjectsScreen.setInvalidShortClientNameField(invalidShorClientName);
 
-        loginScreen.setGender(gender);
+        loginObjectsScreen.setGender(gender);
 
-        String getClientName = loginScreen.getClientNameText();
-        String getCountyName = loginScreen.getCountryNameText();
+        String getClientName = loginObjectsScreen.getClientNameText();
+        String getCountyName = loginObjectsScreen.getCountryNameText();
 
         Assert.assertEquals(getClientName, "v");
         Assert.assertEquals(getCountyName, "Brazil");
 
-        loginScreen.clickLetsShopButton();
+        loginObjectsScreen.clickLetsShopButton();
 
-        String toastMessage = loginScreen.getToastMessage();
+        String toastMessage = loginObjectsScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
@@ -70,21 +70,21 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
     @Parameters({"countryName", "invalidBigClientName" ,"gender"})
     @Test(enabled = false)
     public void LoginAttemptFillingNameFieldWith70CharactersTest(String countryName, String invalidBigClientName, String gender) {
-        loginScreen.setCountry(countryName);
+        loginObjectsScreen.setCountry(countryName);
 
-        loginScreen.setInvalidBigClientNameField(invalidBigClientName);
+        loginObjectsScreen.setInvalidBigClientNameField(invalidBigClientName);
 
-        loginScreen.setGender(gender);
+        loginObjectsScreen.setGender(gender);
 
-        String getClientName = loginScreen.getClientNameText();
-        String getCountyName = loginScreen.getCountryNameText();
+        String getClientName = loginObjectsScreen.getClientNameText();
+        String getCountyName = loginObjectsScreen.getCountryNameText();
 
         Assert.assertEquals(getClientName, "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
         Assert.assertEquals(getCountyName, "Brazil");
 
-        loginScreen.clickLetsShopButton();
+        loginObjectsScreen.clickLetsShopButton();
 
-        String toastMessage = loginScreen.getToastMessage();
+        String toastMessage = loginObjectsScreen.getToastMessage();
 
         Assert.assertEquals(toastMessage, "Number of characters bigger than the maximum value - 50");
     }

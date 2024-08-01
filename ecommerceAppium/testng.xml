@@ -2,15 +2,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Department name">
     <test name="First Try - Run all methods from one class">
+
         <parameter name="countryName" value="Argentina"/>
         <parameter name="clientName" value="Branca de Neve"/>
         <parameter name="invalidShorClientName" value="b"/>
         <parameter name="invalidBigClientName" value="vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"/>
         <parameter name="gender" value="female"/>
+        <parameter name="productNameSFBJungle" value="Nike SFB Jungle"/>
+        <parameter name="productNameAllStar" value="Converse All Star"/>
+        <parameter name="productNamePG3" value="PG 3"/>
+        <parameter name="productNameJordanRings" value="Jordan 6 Rings"/>
+        <parameter name="productIndex" value="2"/>
+
         <classes>
-            <class name="ecommerceAppium.AppiumLoginScreenTest">
+            <class name="ecommerceAppium.AppiumProductScreenTest">
 <!--                <methods>-->
-<!--                    <include name="AttemptWithoutFillingNameFieldTest"/>-->
+<!--                    <include name="ProductAddingOneSuccessfullyTest"/>-->
 <!--                </methods>-->
             </class>
         </classes>
@@ -24,7 +31,7 @@
 <!--                </methods>-->
 <!--            </class>-->
 
-<!--            <class name="ecommerceAppium.AppiumProductsScreenTest">-->
+<!--            <class name="ecommerceAppium.AppiumProductScreenTest">-->
 <!--                <methods>-->
 <!--                    <exclude name="AppiumOpeningTermsSuccessfullyTest"/>-->
 <!--                    <exclude name="AppiumAddingProductsSuccessfullyTest"/>-->

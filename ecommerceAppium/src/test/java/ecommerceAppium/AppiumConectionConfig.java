@@ -5,7 +5,8 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.*;
-import screenObjects.LoginScreen;
+import screenObjects.LoginObjectsScreen;
+import screenObjects.ProductObjectsScreen;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -18,7 +19,8 @@ public class AppiumConectionConfig {
     public AppiumDriverLocalService appiumService;
     public AndroidDriver driver;
 
-    public LoginScreen loginScreen;
+    public LoginObjectsScreen loginObjectsScreen;
+    public ProductObjectsScreen productObjectsScreen;
 
     @BeforeClass
     public void appiumAutostartTheEmulator() throws URISyntaxException, MalformedURLException {
@@ -41,7 +43,8 @@ public class AppiumConectionConfig {
 
         driver = new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), options);
 
-        loginScreen = new LoginScreen(driver);
+        loginObjectsScreen = new LoginObjectsScreen(driver);
+        productObjectsScreen = new ProductObjectsScreen(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
