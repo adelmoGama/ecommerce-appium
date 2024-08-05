@@ -27,6 +27,12 @@ public class CartObjectsScreen extends AndroidActions {
     @AndroidFindBy(id="com.androidsample.generalstore:id/productName")
     private List<WebElement> productsName;
 
+    @AndroidFindBy(id="com.androidsample.generalstore:id/alertTitle")
+    private WebElement termsTitle;
+
+    @AndroidFindBy(id="android:id/button1")
+    private WebElement closeTermsButton;
+
     public String getAmountOnShoppingCart() {
         return amountPrice.getText();
     }
@@ -60,5 +66,13 @@ public class CartObjectsScreen extends AndroidActions {
         } else {
             throw new RuntimeException("The list of products is empty.");
         }
+    }
+
+    public String getTermsTitle() {
+        return termsTitle.getText();
+    }
+
+    public void closeTermsTitle() {
+        closeTermsButton.click();
     }
 }

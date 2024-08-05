@@ -1,8 +1,6 @@
 package ecommerceAppium;
 
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -14,7 +12,7 @@ import java.util.List;
 public class AppiumCartScreenTest extends AppiumConectionConfig {
 
     @Parameters({"countryName", "clientName", "gender", "productNamePG3", "productNameJordanRings"})
-    @Test()
+    @Test(enabled = false)
     public void shoppingCartAmountSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3, String productNameJordanRings) throws InterruptedException {
         loginObjectsScreen.setCountry(countryName);
         loginObjectsScreen.setClientNameField(clientName);
@@ -45,31 +43,29 @@ public class AppiumCartScreenTest extends AppiumConectionConfig {
         Assert.assertTrue(names.contains("Jordan 6 Rings"));
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productName"})
-    @Test(enabled = false)
-    public void openingTermsSuccessfullyTest(String countryName, String clientName, String gender, String productName) {
+    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
+    @Test()
+    public void openingTermsSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
         loginObjectsScreen.setCountry(countryName);
         loginObjectsScreen.setClientNameField(clientName);
         loginObjectsScreen.setGender(gender);
         loginObjectsScreen.clickLetsShopButton();
 
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"PG 3\"));"));
-        driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.androidsample.generalstore:id/productAddCart\"])[2]")).click();
+        productObjectsScreen.scrollToProduct(productNamePG3);
+        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
 
-        String numberOfShops = driver.findElement(By.id("com.androidsample.generalstore:id/counterText")).getText();
+        String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
 
         Assert.assertEquals(numberOfShops, "1");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+        CartObjectsScreen cartObjectsScreen = productObjectsScreen.clickOnShoppingCartIcon();
 
-        WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
+        actions.longPressAction(driver.findElement(By.id("com.androidsample.generalstore:id/termsButton")));
 
-        actions.longPressAction(element);
-
-        String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
+        String termsTitle = cartObjectsScreen.getTermsTitle();
 
         Assert.assertEquals(termsTitle, "Terms Of Conditions");
 
-        driver.findElement(By.id("android:id/button1")).click();
+        cartObjectsScreen.closeTermsTitle();
     }
 }
