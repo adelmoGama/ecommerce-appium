@@ -5,6 +5,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.*;
+import screenObjects.BrowserObjectsScreen;
 import screenObjects.LoginObjectsScreen;
 import screenObjects.ProductObjectsScreen;
 import utils.AndroidActions;
@@ -22,6 +23,7 @@ public class AppiumConectionConfig {
 
     public LoginObjectsScreen loginObjectsScreen;
     public ProductObjectsScreen productObjectsScreen;
+    public BrowserObjectsScreen browserObjectsScreen;
     public AndroidActions actions;
 
     @BeforeClass
@@ -47,6 +49,7 @@ public class AppiumConectionConfig {
 
         loginObjectsScreen = new LoginObjectsScreen(driver);
         productObjectsScreen = new ProductObjectsScreen(driver);
+        browserObjectsScreen = new BrowserObjectsScreen(driver);
         actions = new AndroidActions(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

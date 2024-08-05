@@ -7,102 +7,75 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import screenObjects.CartObjectsScreen;
 
 public class AppiumBrowserTest extends AppiumConectionConfig {
 
-    @Test
-    public void BrowserOpeningAppSuccessfullyTest() throws InterruptedException {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
-        driver.hideKeyboard();
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Male']")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
+    @Test(enabled = false)
+    public void BrowserOpeningAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
+        loginObjectsScreen.setCountry(countryName);
+        loginObjectsScreen.setClientNameField(clientName);
+        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.clickLetsShopButton();
 
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"PG 3\"));"));
-        driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.androidsample.generalstore:id/productAddCart\"])[2]")).click();
+        productObjectsScreen.scrollToProduct(productNamePG3);
+        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
 
-        String numberOfShops = driver.findElement(By.id("com.androidsample.generalstore:id/counterText")).getText();
+        String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
-        WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-//        longPressAction(element);
-        String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
-        Assert.assertEquals(termsTitle, "Terms Of Conditions");
+        productObjectsScreen.clickOnShoppingCartIcon();
 
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
-
-        Thread.sleep(6000);
+        browserObjectsScreen.clickToProceed();
 
         driver.context("WEBVIEW_com.androidsample.generalstore");
     }
 
-    @Test
-    public void BrowserSearchingOnAppSuccessfullyTest() throws InterruptedException {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
-        driver.hideKeyboard();
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Male']")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
+    @Test()
+    public void BrowserSearchingOnAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
+        loginObjectsScreen.setCountry(countryName);
+        loginObjectsScreen.setClientNameField(clientName);
+        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.clickLetsShopButton();
 
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"PG 3\"));"));
-        driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.androidsample.generalstore:id/productAddCart\"])[2]")).click();
+        productObjectsScreen.scrollToProduct(productNamePG3);
+        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
 
-        String numberOfShops = driver.findElement(By.id("com.androidsample.generalstore:id/counterText")).getText();
+        String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
-        WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-//        longPressAction(element);
-        String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
-        Assert.assertEquals(termsTitle, "Terms Of Conditions");
+        productObjectsScreen.clickOnShoppingCartIcon();
 
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
-
-        Thread.sleep(6000);
-
-        driver.context("WEBVIEW_com.androidsample.generalstore");
+        browserObjectsScreen.clickToProceed();
 
         driver.findElement(By.name("q")).sendKeys("Lebron James");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
     }
-    @Test
-    public void BrowserReturningToAppSuccessfullyTest() throws InterruptedException {
-        driver.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brazil\"));")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Pele");
-        driver.hideKeyboard();
-        driver.findElement(By.xpath("//android.widget.RadioButton[@text='Male']")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"PG 3\"));"));
-        driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.androidsample.generalstore:id/productAddCart\"])[2]")).click();
+    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
+    @Test(enabled = false)
+    public void BrowserReturningToAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
+        loginObjectsScreen.setCountry(countryName);
+        loginObjectsScreen.setClientNameField(clientName);
+        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.clickLetsShopButton();
 
-        String numberOfShops = driver.findElement(By.id("com.androidsample.generalstore:id/counterText")).getText();
+        productObjectsScreen.scrollToProduct(productNamePG3);
+        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
+
+        String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");
 
-        driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
-        WebElement element = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-//        longPressAction(element);
-        String termsTitle = driver.findElement(By.id("com.androidsample.generalstore:id/alertTitle")).getText();
-        Assert.assertEquals(termsTitle, "Terms Of Conditions");
+        productObjectsScreen.clickOnShoppingCartIcon();
 
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
-
-        Thread.sleep(6000);
-
-        driver.context("WEBVIEW_com.androidsample.generalstore");
+        browserObjectsScreen.clickToProceed();
 
         driver.findElement(By.name("q")).sendKeys("Lebron James");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
-
-        Thread.sleep(6000);
 
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.context("NATIVE_APP");

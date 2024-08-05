@@ -9,10 +9,32 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Department name</th></tr>
-<tr><td><a href="#t0">First Try - Run all methods from one class</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">75.909</td><td></td><td></td></tr>
+<tr><td><a href="#t0">First Try - Run all methods from one class</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">54.720</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Department name</th></tr></tbody><tbody id="t0"><tr><th colspan="4">First Try - Run all methods from one class &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">ecommerceAppium.AppiumCartScreenTest</td><td><a href="#m0">openingTermsSuccessfullyTest</a></td><td rowspan="1">1722876023625</td><td rowspan="1">34947</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Department name</th></tr></tbody><tbody id="t0"><tr><th colspan="4">First Try - Run all methods from one class &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">ecommerceAppium.AppiumBrowserTest</td><td><a href="#m0">BrowserSearchingOnAppSuccessfullyTest</a></td><td rowspan="1">1722880144041</td><td rowspan="1">33598</td></tr></tbody>
 </table>
-<h2>First Try - Run all methods from one class</h2><h3 id="m0">ecommerceAppium.AppiumCartScreenTest#openingTermsSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th></tr><tr class="param stripe"><td>Argentina</td><td>Branca de Neve</td><td>female</td><td>PG 3</td><td>Jordan 6 Rings</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>First Try - Run all methods from one class</h2><h3 id="m0">ecommerceAppium.AppiumBrowserTest#BrowserSearchingOnAppSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>Argentina</td><td>Branca de Neve</td><td>female</td><td>PG 3</td></tr><tr><th colspan="4">Exception</th></tr><tr><td colspan="4"><div class="stacktrace">org.openqa.selenium.InvalidSelectorException: Locator Strategy &apos;name&apos; is not supported for this session
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.8&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [17638165-2bd8-47cd-92b3-12fad71add34, findElement {value=q, using=name}]
+Capabilities {appium:app: C://Projetos//ws-intelliJ//..., appium:appPackage: com.androidsample.generalstore, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {app: C://Projetos//ws-intelliJ//..., automationName: UiAutomator2, deviceName: emulatorTest3, platformName: ANDROID}, appium:deviceApiLevel: 35, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone64_x86_64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 420, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.625, appium:platformVersion: 15, appium:statBarHeight: 63, appium:takesScreenshot: true, appium:viewportRect: {height: 2337, left: 0, top: 63, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 17638165-2bd8-47cd-92b3-12fad71add34
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+	at ecommerceAppium.AppiumBrowserTest.BrowserSearchingOnAppSuccessfullyTest(AppiumBrowserTest.java:59)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
