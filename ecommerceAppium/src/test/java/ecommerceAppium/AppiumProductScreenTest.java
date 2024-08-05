@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class AppiumProductScreenTest extends AppiumConectionConfig {
     @Parameters({"countryName", "clientName", "gender", "productNameSFBJungle"})
-    @Test(enabled = false)
+    @Test()
     public void ProductSearchingSuccessfullyTest(String countryName, String clientName, String gender, String productNameSFBJungle) {
         loginObjectsScreen.setCountry(countryName);
         loginObjectsScreen.setClientNameField(clientName);
@@ -20,7 +20,7 @@ public class AppiumProductScreenTest extends AppiumConectionConfig {
     }
 
     @Parameters({"countryName", "clientName", "gender", "productNameAllStar", "productIndex"})
-    @Test(enabled = false)
+    @Test()
     public void ProductAddingOneSuccessfullyTest(String countryName, String clientName, String gender, String productNameAllStar, int productIndex) {
         loginObjectsScreen.setCountry(countryName);
         loginObjectsScreen.setClientNameField(clientName);
@@ -37,7 +37,7 @@ public class AppiumProductScreenTest extends AppiumConectionConfig {
     }
 
     @Parameters({"countryName", "clientName", "gender", "productNamePG3", "productNameJordanRings"})
-    @Test(enabled = false)
+    @Test()
     public void ProductsAddingSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3, String productNameJordanRings) {
         loginObjectsScreen.setCountry(countryName);
         loginObjectsScreen.setClientNameField(clientName);

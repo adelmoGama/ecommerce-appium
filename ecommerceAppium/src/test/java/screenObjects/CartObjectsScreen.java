@@ -21,18 +21,34 @@ public class CartObjectsScreen extends AndroidActions {
     @AndroidFindBy(id="com.androidsample.generalstore:id/totalAmountLbl")
     private WebElement amountPrice;
 
-    @AndroidFindBy(xpath="//android.support.v7.widget.RecyclerView[@resource-id='com.androidsample.generalstore:id/rvCartProductList']")
-    private List<WebElement> cartProductsAddedList;
-
     @AndroidFindBy(id="com.androidsample.generalstore:id/productPrice")
-    private List<WebElement> productPrices;
+    private List<WebElement> productsPrice;
+
+    @AndroidFindBy(id="com.androidsample.generalstore:id/productName")
+    private List<WebElement> productsName;
 
     public String getAmountOnShoppingCart() {
         return amountPrice.getText();
     }
 
-    public List<String> getCartProductsAddedList() {
-        List<WebElement> elements = cartProductsAddedList;
+    public double getCartProductsAmount() {
+        List<WebElement> elements = productsPrice;
+        double productsAmount = 0.0;
+
+        if(!elements.isEmpty()) {
+            for (WebElement productPrice : productsPrice) {
+                String amountPrice = productPrice.getText();
+                double price = AndroidActions.getFormattedAmount(amountPrice);
+                productsAmount += price;
+            }
+            return productsAmount;
+        } else {
+            throw new RuntimeException("The list of products is empty.");
+        }
+    }
+
+    public List<String> getCartProductsNameList() {
+        List<WebElement> elements = productsName;
         List<String> names = new ArrayList<>();
 
         if(!elements.isEmpty()) {
@@ -41,22 +57,6 @@ public class CartObjectsScreen extends AndroidActions {
                 names.add(productName);
             }
             return names;
-        } else {
-            throw new RuntimeException("The list of products is empty.");
-        }
-    }
-
-    public double getCartProductsAmount() {
-        List<WebElement> elements = productPrices;
-        double productsAmount = 0.0;
-
-        if(!elements.isEmpty()) {
-            for (WebElement productPrice : productPrices) {
-                String amountPrice = productPrice.getText();
-                double price = AndroidActions.getFormattedAmount(amountPrice);
-                productsAmount += price;
-            }
-            return productsAmount;
         } else {
             throw new RuntimeException("The list of products is empty.");
         }

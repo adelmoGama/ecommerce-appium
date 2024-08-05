@@ -64,8 +64,8 @@ public class ProductObjectsScreen extends AndroidActions {
         return numberOfProductsOnShoppingCartIcon.getText();
     }
 
-    public void clickOnShoppingCartIcon() {
+    public CartObjectsScreen clickOnShoppingCartIcon() {
         cartButton.click();
-        cartObjectsScreen = new CartObjectsScreen(driver);
+        return cartObjectsScreen = new CartObjectsScreen(driver);
     }
 }

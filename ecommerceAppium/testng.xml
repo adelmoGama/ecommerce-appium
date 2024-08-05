@@ -15,7 +15,7 @@
         <parameter name="productIndex" value="2"/>
 
         <classes>
-            <class name="ecommerceAppium.AppiumProductScreenTest">
+            <class name="ecommerceAppium.AppiumCartScreenTest">
 <!--                <methods>-->
 <!--                    <include name="ProductAddingOneSuccessfullyTest"/>-->
 <!--                </methods>-->
