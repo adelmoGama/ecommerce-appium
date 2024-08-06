@@ -1,15 +1,13 @@
-package ecommerceAppium;
+package ecommerceAppiumTests;
 
-import io.appium.java_client.AppiumBy;
+import configs.AppiumConectionConfig;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import screenObjects.CartObjectsScreen;
 
 public class AppiumBrowserTest extends AppiumConectionConfig {
 

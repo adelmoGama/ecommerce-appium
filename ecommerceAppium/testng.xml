@@ -15,7 +15,7 @@
         <parameter name="productIndex" value="2"/>
 
         <classes>
-            <class name="ecommerceAppium.AppiumBrowserTest">
+            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">
 <!--                <methods>-->
 <!--                    <include name="ProductAddingOneSuccessfullyTest"/>-->
 <!--                </methods>-->
@@ -25,13 +25,13 @@
 
 <!--    <test name="Second Try - Include and exclude methods">-->
 <!--        <classes>-->
-<!--            <class name="ecommerceAppium.AppiumLoginScreenTest">-->
+<!--            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">-->
 <!--                <methods>-->
 <!--                    <include name="AppiumLoginSuccessfullyTest"/>-->
 <!--                </methods>-->
 <!--            </class>-->
 
-<!--            <class name="ecommerceAppium.AppiumProductScreenTest">-->
+<!--            <class name="ecommerceAppiumTests.AppiumProductScreenTest">-->
 <!--                <methods>-->
 <!--                    <exclude name="AppiumOpeningTermsSuccessfullyTest"/>-->
 <!--                    <exclude name="AppiumAddingProductsSuccessfullyTest"/>-->
@@ -43,7 +43,7 @@
 <!--&lt;!&ndash;    I couldn't use regex to exclude or include test methods&ndash;&gt;-->
 <!--    <test name="Third Try - Using regex to exclude ou include methods">-->
 <!--        <classes>-->
-<!--            <class name="ecommerceAppium.AppiumLoginScreenTest">-->
+<!--            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">-->
 <!--                <methods>-->
 <!--                    <exclude name="Login.*"/>-->
 <!--                </methods>-->

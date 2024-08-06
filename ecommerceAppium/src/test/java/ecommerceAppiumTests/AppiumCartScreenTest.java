@@ -1,5 +1,6 @@
-package ecommerceAppium;
+package ecommerceAppiumTests;
 
+import configs.AppiumConectionConfig;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
