@@ -1,0 +1,14 @@
+[
+  {
+    "countryName": "Argentina",
+    "clientName": "Branca de Neve",
+    "femaleGender": "female",
+    "maleGender": "male",
+    "invalidShorClientName": "v",
+    "invalidBigClientName": "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
+    "productNameSFBJungle": "Nike SFB Jungle",
+    "productNameAllStar": "Converse All Star",
+    "productNamePG3": "PG 3",
+    "productNameJordanRings": "Jordan 6 Rings"
+  }
+]

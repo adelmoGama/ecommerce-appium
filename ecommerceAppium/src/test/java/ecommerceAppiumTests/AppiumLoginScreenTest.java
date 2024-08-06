@@ -1,25 +1,26 @@
 package ecommerceAppiumTests;
 
-import configs.AppiumConectionConfig;
+import configs.AppiumConnectionConfig;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class AppiumLoginScreenTest extends AppiumConectionConfig {
-    @Parameters({"countryName", "clientName", "gender"})
-    @Test
-    public void LoginSuccessfullyTest(String countryName, String clientName, String gender) throws InterruptedException {
-        loginObjectsScreen.setCountry(countryName);
+import java.util.HashMap;
 
-        loginObjectsScreen.setClientNameField(clientName);
 
-        loginObjectsScreen.setGender(gender);
+public class AppiumLoginScreenTest extends AppiumConnectionConfig {
+    @Test(dataProvider = "getData", enabled = false)
+    public void LoginSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+
+        loginObjectsScreen.setGender(data.get("femaleGender"));
 
         String getClientName = loginObjectsScreen.getClientNameText();
         String getCountyName = loginObjectsScreen.getCountryNameText();
 
-        Assert.assertEquals(getClientName, "Branca de Neve");
-        Assert.assertEquals(getCountyName, "Argentina");
+        Assert.assertEquals(getClientName, data.get("clientName"));
+        Assert.assertEquals(getCountyName, data.get("countryName"));
 
         loginObjectsScreen.clickLetsShopButton();
 
@@ -28,16 +29,13 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(pageName, "Products");
     }
 
-    @Parameters({"countryName", "gender"})
-    @Test
-    public void AttemptWithoutFillingNameFieldTest(String countryName, String gender) {
-        loginObjectsScreen.setCountry(countryName);
+    @Test(dataProvider = "getData")
+    public void AttemptWithoutFillingNameFieldTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
 
-        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.setGender(data.get("femaleGender"));
 
         String getCountyName = loginObjectsScreen.getCountryNameText();
-
-        Assert.assertEquals(getCountyName, "Argentina");
 
         loginObjectsScreen.clickLetsShopButton();
 
@@ -46,20 +44,19 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
-    @Parameters({"countryName", "invalidShorClientName" ,"gender"})
-    @Test(enabled = false)
-    public void LoginAttemptFillingNameFieldWithOneCharacterTest(String countryName, String invalidShorClientName, String gender) {
-        loginObjectsScreen.setCountry(countryName);
+    @Test(dataProvider = "getData", enabled = false)
+    public void LoginAttemptFillingNameFieldWithOneCharacterTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
 
-        loginObjectsScreen.setInvalidShortClientNameField(invalidShorClientName);
+        loginObjectsScreen.setInvalidShortClientNameField(data.get("invalidShorClientName"));
 
-        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.setGender(data.get("femaleGender"));
 
         String getClientName = loginObjectsScreen.getClientNameText();
         String getCountyName = loginObjectsScreen.getCountryNameText();
 
-        Assert.assertEquals(getClientName, "v");
-        Assert.assertEquals(getCountyName, "Brazil");
+        Assert.assertEquals(getClientName, data.get("invalidShorClientName"));
+        Assert.assertEquals(getCountyName, data.get("countryName"));
 
         loginObjectsScreen.clickLetsShopButton();
 
@@ -68,20 +65,19 @@ public class AppiumLoginScreenTest extends AppiumConectionConfig {
         Assert.assertEquals(toastMessage, "Please enter your name");
     }
 
-    @Parameters({"countryName", "invalidBigClientName" ,"gender"})
-    @Test(enabled = false)
-    public void LoginAttemptFillingNameFieldWith70CharactersTest(String countryName, String invalidBigClientName, String gender) {
-        loginObjectsScreen.setCountry(countryName);
+    @Test(dataProvider = "getData", enabled = false)
+    public void LoginAttemptFillingNameFieldWith70CharactersTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
 
-        loginObjectsScreen.setInvalidBigClientNameField(invalidBigClientName);
+        loginObjectsScreen.setInvalidBigClientNameField(data.get("invalidBigClientName"));
 
-        loginObjectsScreen.setGender(gender);
+        loginObjectsScreen.setGender(data.get("femaleGender"));
 
         String getClientName = loginObjectsScreen.getClientNameText();
         String getCountyName = loginObjectsScreen.getCountryNameText();
 
-        Assert.assertEquals(getClientName, "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-        Assert.assertEquals(getCountyName, "Brazil");
+        Assert.assertEquals(getClientName, data.get("invalidBigClientName"));
+        Assert.assertEquals(getCountyName, data.get("countryName"));
 
         loginObjectsScreen.clickLetsShopButton();
 

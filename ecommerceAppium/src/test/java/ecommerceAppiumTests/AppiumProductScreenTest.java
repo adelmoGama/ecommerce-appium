@@ -1,12 +1,12 @@
 package ecommerceAppiumTests;
 
-import configs.AppiumConectionConfig;
+import configs.AppiumConnectionConfig;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class AppiumProductScreenTest extends AppiumConectionConfig {
+public class AppiumProductScreenTest extends AppiumConnectionConfig {
     @Parameters({"countryName", "clientName", "gender", "productNameSFBJungle"})
     @Test()
     public void ProductSearchingSuccessfullyTest(String countryName, String clientName, String gender, String productNameSFBJungle) {

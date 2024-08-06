@@ -1,6 +1,6 @@
 package ecommerceAppiumTests;
 
-import configs.AppiumConectionConfig;
+import configs.AppiumConnectionConfig;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -10,7 +10,7 @@ import utils.AndroidActions;
 
 import java.util.List;
 
-public class AppiumCartScreenTest extends AppiumConectionConfig {
+public class AppiumCartScreenTest extends AppiumConnectionConfig {
 
     @Parameters({"countryName", "clientName", "gender", "productNamePG3", "productNameJordanRings"})
     @Test(enabled = false)

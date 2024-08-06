@@ -1,6 +1,6 @@
 package ecommerceAppiumTests;
 
-import configs.AppiumConectionConfig;
+import configs.AppiumConnectionConfig;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class AppiumBrowserTest extends AppiumConectionConfig {
+public class AppiumBrowserTest extends AppiumConnectionConfig {
 
     @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
     @Test(enabled = false)

@@ -1,53 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Department name">
-    <test name="First Try - Run all methods from one class">
-
-        <parameter name="countryName" value="Argentina"/>
-        <parameter name="clientName" value="Branca de Neve"/>
-        <parameter name="invalidShorClientName" value="b"/>
-        <parameter name="invalidBigClientName" value="vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"/>
-        <parameter name="gender" value="female"/>
-        <parameter name="productNameSFBJungle" value="Nike SFB Jungle"/>
-        <parameter name="productNameAllStar" value="Converse All Star"/>
-        <parameter name="productNamePG3" value="PG 3"/>
-        <parameter name="productNameJordanRings" value="Jordan 6 Rings"/>
-        <parameter name="productIndex" value="2"/>
-
+    <test name="Run all methods from all classes">
         <classes>
             <class name="ecommerceAppiumTests.AppiumLoginScreenTest">
-<!--                <methods>-->
-<!--                    <include name="ProductAddingOneSuccessfullyTest"/>-->
-<!--                </methods>-->
             </class>
         </classes>
     </test>
-
-<!--    <test name="Second Try - Include and exclude methods">-->
-<!--        <classes>-->
-<!--            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">-->
-<!--                <methods>-->
-<!--                    <include name="AppiumLoginSuccessfullyTest"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-
-<!--            <class name="ecommerceAppiumTests.AppiumProductScreenTest">-->
-<!--                <methods>-->
-<!--                    <exclude name="AppiumOpeningTermsSuccessfullyTest"/>-->
-<!--                    <exclude name="AppiumAddingProductsSuccessfullyTest"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--&lt;!&ndash;    I couldn't use regex to exclude or include test methods&ndash;&gt;-->
-<!--    <test name="Third Try - Using regex to exclude ou include methods">-->
-<!--        <classes>-->
-<!--            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">-->
-<!--                <methods>-->
-<!--                    <exclude name="Login.*"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>

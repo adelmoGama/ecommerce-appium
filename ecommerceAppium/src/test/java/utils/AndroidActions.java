@@ -3,13 +3,15 @@ package utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
-import configs.AppiumConectionConfig;
+import configs.AppiumConnectionConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,10 +19,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 
-public class AndroidActions extends AppiumConectionConfig {
+public class AndroidActions extends AppiumConnectionConfig {
 
-    public AndroidActions(AndroidDriver androidDriver) {
-        this.driver = androidDriver;
+    public AndroidActions(AndroidDriver driver) {
+        this.driver = driver;
     }
 
     public static Double getFormattedAmount(String amount) {
@@ -43,13 +45,4 @@ public class AndroidActions extends AppiumConectionConfig {
     public void scrollToText(String text) {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + text + "\"));"));
     }
-
-    public List<HashMap<String, String>> getJsonData(String jsonFilePath) throws IOException {
-        String jsonContent = FileUtils.readFileToString(new File(jsonFilePath), StandardCharsets.UTF_8);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        return mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>() {});
-    }
-
 }

@@ -1,9 +1,12 @@
 package configs;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.apache.commons.io.FileUtils;
 import org.testng.annotations.*;
 import screenObjects.BrowserObjectsScreen;
 import screenObjects.LoginObjectsScreen;
@@ -11,12 +14,16 @@ import screenObjects.ProductObjectsScreen;
 import utils.AndroidActions;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 
-public class AppiumConectionConfig {
+public class AppiumConnectionConfig {
 
     public AppiumDriverLocalService appiumService;
     public AndroidDriver driver;
@@ -63,5 +70,20 @@ public class AppiumConectionConfig {
     @AfterMethod
     public void tearDownDriver() {
         driver.quit();
+    }
+
+    public List<HashMap<String, String>> getJsonData(String jsonFilePath) throws IOException {
+        String jsonContent = FileUtils.readFileToString(new File(jsonFilePath), StandardCharsets.UTF_8);
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        return mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>() {});
+    }
+
+    @DataProvider
+    public Object[][] getData() throws IOException {
+        List<HashMap<String, String>> data =  getJsonData(System.getProperty("user.dir") + "//src//test//java//testData//data.json");
+
+        return new Object[][] {{data.get(0)}};
     }
 }
