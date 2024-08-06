@@ -6,21 +6,21 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
 
 public class AppiumBrowserTest extends AppiumConnectionConfig {
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
-    @Test(enabled = false)
-    public void BrowserOpeningAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void BrowserOpeningAppSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");
@@ -32,16 +32,15 @@ public class AppiumBrowserTest extends AppiumConnectionConfig {
         driver.context("WEBVIEW_com.androidsample.generalstore");
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
-    @Test()
-    public void BrowserSearchingOnAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void BrowserSearchingOnAppSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");
@@ -54,16 +53,15 @@ public class AppiumBrowserTest extends AppiumConnectionConfig {
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
-    @Test(enabled = false)
-    public void BrowserReturningToAppSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void BrowserReturningToAppSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "1");

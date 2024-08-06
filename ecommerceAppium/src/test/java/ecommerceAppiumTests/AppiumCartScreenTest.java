@@ -3,28 +3,27 @@ package ecommerceAppiumTests;
 import configs.AppiumConnectionConfig;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import screenObjects.CartObjectsScreen;
 import utils.AndroidActions;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class AppiumCartScreenTest extends AppiumConnectionConfig {
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3", "productNameJordanRings"})
-    @Test(enabled = false)
-    public void shoppingCartAmountSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3, String productNameJordanRings) throws InterruptedException {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void shoppingCartAmountSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByIndex(1);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
-        productObjectsScreen.scrollToProduct(productNameJordanRings);
-        productObjectsScreen.addProductToShoppingCartByName(productNameJordanRings);
+        productObjectsScreen.scrollToProduct(data.get("productNameJordanRings"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNameJordanRings"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "2");
@@ -40,20 +39,19 @@ public class AppiumCartScreenTest extends AppiumConnectionConfig {
 
         Assert.assertEquals(totalAmount, productsAmount);
         Assert.assertEquals(names.size(), 2);
-        Assert.assertTrue(names.contains("PG 3"));
-        Assert.assertTrue(names.contains("Jordan 6 Rings"));
+        Assert.assertTrue(names.contains(data.get("productNamePG3")));
+        Assert.assertTrue(names.contains(data.get("productNameJordanRings")));
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3"})
-    @Test()
-    public void openingTermsSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void openingTermsSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByName(productNamePG3);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
 

@@ -3,53 +3,50 @@ package ecommerceAppiumTests;
 import configs.AppiumConnectionConfig;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 public class AppiumProductScreenTest extends AppiumConnectionConfig {
-    @Parameters({"countryName", "clientName", "gender", "productNameSFBJungle"})
-    @Test()
-    public void ProductSearchingSuccessfullyTest(String countryName, String clientName, String gender, String productNameSFBJungle) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void ProductSearchingSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNameSFBJungle);
+        productObjectsScreen.scrollToProduct(data.get("productNameSFBJungle"));
 
         Assert.assertTrue(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName' and @text='Nike SFB Jungle']")).isDisplayed());
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productNameAllStar", "productIndex"})
-    @Test()
-    public void ProductAddingOneSuccessfullyTest(String countryName, String clientName, String gender, String productNameAllStar, int productIndex) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void ProductAddingOneSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNameAllStar);
-
-        productObjectsScreen.addProductToShoppingCartByIndex(productIndex);
+        productObjectsScreen.scrollToProduct(data.get("productNameAllStar"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNameAllStar"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
 
         Assert.assertEquals(numberOfShops, "1");
     }
 
-    @Parameters({"countryName", "clientName", "gender", "productNamePG3", "productNameJordanRings"})
-    @Test()
-    public void ProductsAddingSuccessfullyTest(String countryName, String clientName, String gender, String productNamePG3, String productNameJordanRings) {
-        loginObjectsScreen.setCountry(countryName);
-        loginObjectsScreen.setClientNameField(clientName);
-        loginObjectsScreen.setGender(gender);
+    @Test(dataProvider = "getData")
+    public void ProductsAddingSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.setCountry(data.get("countryName"));
+        loginObjectsScreen.setClientNameField(data.get("clientName"));
+        loginObjectsScreen.setGender(data.get("femaleGender"));
         loginObjectsScreen.clickLetsShopButton();
 
-        productObjectsScreen.scrollToProduct(productNamePG3);
-        productObjectsScreen.addProductToShoppingCartByIndex(1);
+        productObjectsScreen.scrollToProduct(data.get("productNamePG3"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNamePG3"));
 
-        productObjectsScreen.scrollToProduct(productNameJordanRings);
-        productObjectsScreen.addProductToShoppingCartByName(productNameJordanRings);
+        productObjectsScreen.scrollToProduct(data.get("productNameJordanRings"));
+        productObjectsScreen.addProductToShoppingCartByName(data.get("productNameJordanRings"));
 
         String numberOfShops = productObjectsScreen.getNumberOfProductsOnShoppingCartIcon();
         Assert.assertEquals(numberOfShops, "2");
