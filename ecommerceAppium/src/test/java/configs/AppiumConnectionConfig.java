@@ -11,17 +11,16 @@ import org.testng.annotations.*;
 import screenObjects.BrowserObjectsScreen;
 import screenObjects.LoginObjectsScreen;
 import screenObjects.ProductObjectsScreen;
-import utils.AndroidActions;
+import testUtils.AndroidActions;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 
 public class AppiumConnectionConfig {
 
@@ -34,25 +33,30 @@ public class AppiumConnectionConfig {
     public AndroidActions actions;
 
     @BeforeClass
-    public void appiumAutostartTheEmulator() throws URISyntaxException, MalformedURLException {
+    public void appiumAutostartTheEmulator() throws IOException {
+        Properties properties = new Properties();
+        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "//src//test//resources//data.properties");
+
+        properties.load(fileInputStream);
+
         appiumService = new AppiumServiceBuilder()
                 .withAppiumJS(new File("C://Users//USUARIO//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
-                .withIPAddress("127.0.0.1")
-                .usingPort(4723)
+                .withIPAddress(properties.getProperty("ipAddress"))
+                .usingPort(Integer.parseInt(properties.getProperty("port")))
                 .build();
 
         appiumService.start();
     }
 
     @BeforeMethod
-    public void appiumAutostartTheDriver() throws URISyntaxException, MalformedURLException {
+    public void appiumAutostartTheDriver() {
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setDeviceName("emulatorTest3");
-        options.setApp("C://Projetos//ws-intelliJ//ecommerce-appium//ecommerceAppium//src//test//resources//General-Store.apk");
+        options.setApp(System.getProperty("user.dir") + "//src//test//resources//General-Store.apk");
         options.setAutomationName("UiAutomator2").setPlatformName("android");
 
-        driver = new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), options);
+        driver = new AndroidDriver(appiumService.getUrl(), options);
 
         loginObjectsScreen = new LoginObjectsScreen(driver);
         productObjectsScreen = new ProductObjectsScreen(driver);

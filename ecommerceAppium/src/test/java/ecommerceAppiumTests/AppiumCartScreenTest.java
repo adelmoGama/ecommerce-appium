@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import screenObjects.CartObjectsScreen;
-import utils.AndroidActions;
+import testUtils.AndroidActions;
 
 import java.util.HashMap;
 import java.util.List;
