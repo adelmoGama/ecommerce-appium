@@ -42,9 +42,10 @@ This project is an automation for a marketplace app developed using Appium with 
 1. **Cloning the repository**:
    git clone https://github.com/adelmoGama/ecommerce-appium.git
 2. **Changing the app path**:
-   You will need change the path of the app on AppiumConnectionConfig.
+   You will need change the path app on AppiumConnectionConfig.
 3. **Runing the tests**:
-   You can run the tests just executing the testng.xml file where all classes are in.
+   You can run the tests just executing the testng.xml file where all classes are in or executing the maven command:
+  - mvn test -PRegression
 4. **Generating the allure report**:
    After the tests finished you need to get in ´target package´ and execute the command to generate the report.
    - cd target
