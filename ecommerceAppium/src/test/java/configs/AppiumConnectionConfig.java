@@ -46,10 +46,7 @@ public class AppiumConnectionConfig {
                 .build();
 
         appiumService.start();
-    }
 
-    @BeforeMethod
-    public void appiumAutostartTheDriver() {
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setDeviceName("emulatorTest3");
@@ -68,12 +65,8 @@ public class AppiumConnectionConfig {
 
     @AfterClass
     public void tearDownAppium() {
-        appiumService.stop();
-    }
-
-    @AfterMethod
-    public void tearDownDriver() {
         driver.quit();
+        appiumService.stop();
     }
 
     public List<HashMap<String, String>> getJsonData(String jsonFilePath) throws IOException {

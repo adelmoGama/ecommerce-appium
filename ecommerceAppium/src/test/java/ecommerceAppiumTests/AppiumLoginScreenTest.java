@@ -8,8 +8,10 @@ import java.util.HashMap;
 
 
 public class AppiumLoginScreenTest extends AppiumConnectionConfig {
-    @Test(dataProvider = "getData", enabled = false)
+    @Test(dataProvider = "getData")
     public void LoginSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyPageMethod();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
 
         loginObjectsScreen.setClientNameField(data.get("clientName"));
@@ -31,6 +33,8 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void AttemptWithoutFillingNameFieldTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyPageMethod();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
 
         loginObjectsScreen.setGender(data.get("femaleGender"));
@@ -46,6 +50,8 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData", enabled = false)
     public void LoginAttemptFillingNameFieldWithOneCharacterTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyPageMethod();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
 
         loginObjectsScreen.setInvalidShortClientNameField(data.get("invalidShorClientName"));
@@ -67,6 +73,8 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData", enabled = false)
     public void LoginAttemptFillingNameFieldWith70CharactersTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyPageMethod();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
 
         loginObjectsScreen.setInvalidBigClientNameField(data.get("invalidBigClientName"));

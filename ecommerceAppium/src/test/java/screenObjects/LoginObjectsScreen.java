@@ -4,9 +4,14 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import testUtils.AndroidActions;
+
+import java.time.Duration;
 
 public class LoginObjectsScreen extends AndroidActions {
 
@@ -86,5 +91,16 @@ public class LoginObjectsScreen extends AndroidActions {
 
     public String getToastMessage() {
         return toastMessage.getAttribute("name");
+    }
+
+    public void verifyPageMethod() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        try {
+            WebElement pageIdentifier = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.androidsample.generalstore:id/btnLetsShop")));
+        } catch (TimeoutException e) {
+            System.out.println("Elemento não encontrado, voltando uma página.");
+            driver.navigate().back();
+        }
     }
 }
