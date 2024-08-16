@@ -10,6 +10,8 @@ import java.util.HashMap;
 public class AppiumProductScreenTest extends AppiumConnectionConfig {
     @Test(dataProvider = "getData")
     public void ProductSearchingSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyLoginPage();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
         loginObjectsScreen.setClientNameField(data.get("clientName"));
         loginObjectsScreen.setGender(data.get("femaleGender"));
@@ -22,6 +24,8 @@ public class AppiumProductScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void ProductAddingOneSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyLoginPage();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
         loginObjectsScreen.setClientNameField(data.get("clientName"));
         loginObjectsScreen.setGender(data.get("femaleGender"));
@@ -37,6 +41,8 @@ public class AppiumProductScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void ProductsAddingSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyLoginPage();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
         loginObjectsScreen.setClientNameField(data.get("clientName"));
         loginObjectsScreen.setGender(data.get("femaleGender"));

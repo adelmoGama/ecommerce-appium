@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class AppiumLoginScreenTest extends AppiumConnectionConfig {
     @Test(dataProvider = "getData")
     public void LoginSuccessfullyTest(HashMap<String, String> data) {
-        loginObjectsScreen.verifyPageMethod();
+        loginObjectsScreen.verifyLoginPage();
 
         loginObjectsScreen.setCountry(data.get("countryName"));
 
@@ -33,7 +33,7 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void AttemptWithoutFillingNameFieldTest(HashMap<String, String> data) {
-        loginObjectsScreen.verifyPageMethod();
+        loginObjectsScreen.verifyLoginPage();
 
         loginObjectsScreen.setCountry(data.get("countryName"));
 
@@ -50,7 +50,7 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData", enabled = false)
     public void LoginAttemptFillingNameFieldWithOneCharacterTest(HashMap<String, String> data) {
-        loginObjectsScreen.verifyPageMethod();
+        loginObjectsScreen.verifyLoginPage();
 
         loginObjectsScreen.setCountry(data.get("countryName"));
 
@@ -73,7 +73,7 @@ public class AppiumLoginScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData", enabled = false)
     public void LoginAttemptFillingNameFieldWith70CharactersTest(HashMap<String, String> data) {
-        loginObjectsScreen.verifyPageMethod();
+        loginObjectsScreen.verifyLoginPage();
 
         loginObjectsScreen.setCountry(data.get("countryName"));
 

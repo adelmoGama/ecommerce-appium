@@ -93,7 +93,7 @@ public class LoginObjectsScreen extends AndroidActions {
         return toastMessage.getAttribute("name");
     }
 
-    public void verifyPageMethod() {
+    public void verifyLoginPage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         try {

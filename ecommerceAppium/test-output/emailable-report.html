@@ -9,85 +9,12 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Department name</th></tr>
-<tr><td><a href="#t0">Run all methods from all classes</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">93.213</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Run all methods from all classes</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">119.102</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Department name</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Run all methods from all classes &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">ecommerceAppiumTests.AppiumLoginScreenTest</td><td><a href="#m0">LoginAttemptFillingNameFieldWith70CharactersTest</a></td><td rowspan="1">1723825472307</td><td rowspan="1">16205</td></tr><tr class="failedeven"><td><a href="#m1">LoginAttemptFillingNameFieldWithOneCharacterTest</a></td><td rowspan="1">1723825488526</td><td rowspan="1">25548</td></tr><tr><th colspan="4">Run all methods from all classes &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">ecommerceAppiumTests.AppiumLoginScreenTest</td><td><a href="#m2">AttemptWithoutFillingNameFieldTest</a></td><td rowspan="1">1723825464865</td><td rowspan="1">7210</td></tr><tr class="passedeven"><td><a href="#m3">LoginSuccessfullyTest</a></td><td rowspan="1">1723825514080</td><td rowspan="1">17107</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Department name</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Run all methods from all classes &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">ecommerceAppiumTests.AppiumProductScreenTest</td><td><a href="#m0">ProductAddingOneSuccessfullyTest</a></td><td rowspan="1">1723826133804</td><td rowspan="1">19273</td></tr><tr class="passedeven"><td><a href="#m1">ProductSearchingSuccessfullyTest</a></td><td rowspan="1">1723826153204</td><td rowspan="1">28313</td></tr><tr class="passedeven"><td><a href="#m2">ProductsAddingSuccessfullyTest</a></td><td rowspan="1">1723826181527</td><td rowspan="1">38962</td></tr></tbody>
 </table>
-<h2>Run all methods from all classes</h2><h3 id="m0">ecommerceAppiumTests.AppiumLoginScreenTest#LoginAttemptFillingNameFieldWith70CharactersTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({By.xpath: (//android.widget.Toast)[1]})
-	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:166)
-	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:75)
-	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:78)
-	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$QX5MuOaY.getAttribute(Unknown Source)
-	at screenObjects.LoginObjectsScreen.getToastMessage(LoginObjectsScreen.java:95)
-	at ecommerceAppiumTests.AppiumLoginScreenTest.LoginAttemptFillingNameFieldWith70CharactersTest(AppiumLoginScreenTest.java:92)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
-	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@2c465259 (tried for 1 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:135)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:160)
-	... 32 more
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({By.xpath: (//android.widget.Toast)[1]})
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.23.1&apos;, revision: &apos;656257d8e9&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.8&apos;
-Driver info: driver.version: RemoteWebDriver
-	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:74)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:53)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$1(AppiumElementLocator.java:160)
-	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:217)
-	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:210)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	... 34 more
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">ecommerceAppiumTests.AppiumLoginScreenTest#LoginAttemptFillingNameFieldWithOneCharacterTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({By.xpath: (//android.widget.Toast)[1]})
-	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:166)
-	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:75)
-	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:78)
-	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$QX5MuOaY.getAttribute(Unknown Source)
-	at screenObjects.LoginObjectsScreen.getToastMessage(LoginObjectsScreen.java:95)
-	at ecommerceAppiumTests.AppiumLoginScreenTest.LoginAttemptFillingNameFieldWithOneCharacterTest(AppiumLoginScreenTest.java:69)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
-	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@796642ae (tried for 1 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:135)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:160)
-	... 32 more
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({By.xpath: (//android.widget.Toast)[1]})
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.23.1&apos;, revision: &apos;656257d8e9&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.8&apos;
-Driver info: driver.version: RemoteWebDriver
-	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:74)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:53)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$1(AppiumElementLocator.java:160)
-	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:217)
-	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:210)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	... 34 more
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">ecommerceAppiumTests.AppiumLoginScreenTest#AttemptWithoutFillingNameFieldTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">ecommerceAppiumTests.AppiumLoginScreenTest#LoginSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Run all methods from all classes</h2><h3 id="m0">ecommerceAppiumTests.AppiumProductScreenTest#ProductAddingOneSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">ecommerceAppiumTests.AppiumProductScreenTest#ProductSearchingSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">ecommerceAppiumTests.AppiumProductScreenTest#ProductsAddingSuccessfullyTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{productNameAllStar=Converse All Star, clientName=Branca de Neve, invalidBigClientName=vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv, productNameSFBJungle=Nike SFB Jungle, femaleGender=female, invalidShorClientName=v, productNamePG3=PG 3, countryName=Argentina, maleGender=male, productNameJordanRings=Jordan 6 Rings}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
