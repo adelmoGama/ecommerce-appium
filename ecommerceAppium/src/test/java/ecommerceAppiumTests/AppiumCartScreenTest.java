@@ -14,6 +14,8 @@ public class AppiumCartScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void shoppingCartAmountSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyLoginPage();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
         loginObjectsScreen.setClientNameField(data.get("clientName"));
         loginObjectsScreen.setGender(data.get("femaleGender"));
@@ -45,6 +47,8 @@ public class AppiumCartScreenTest extends AppiumConnectionConfig {
 
     @Test(dataProvider = "getData")
     public void openingTermsSuccessfullyTest(HashMap<String, String> data) {
+        loginObjectsScreen.verifyLoginPage();
+
         loginObjectsScreen.setCountry(data.get("countryName"));
         loginObjectsScreen.setClientNameField(data.get("clientName"));
         loginObjectsScreen.setGender(data.get("femaleGender"));

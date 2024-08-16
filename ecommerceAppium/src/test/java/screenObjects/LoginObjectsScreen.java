@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import testUtils.AndroidActions;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LoginObjectsScreen extends AndroidActions {
 
@@ -95,12 +96,18 @@ public class LoginObjectsScreen extends AndroidActions {
 
     public void verifyLoginPage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        boolean variable = true;
 
-        try {
-            WebElement pageIdentifier = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.androidsample.generalstore:id/btnLetsShop")));
-        } catch (TimeoutException e) {
-            System.out.println("Elemento não encontrado, voltando uma página.");
-            driver.navigate().back();
+        while(variable) {
+            try {
+                WebElement pageIdentifier = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.androidsample.generalstore:id/btnLetsShop")));
+                if(pageIdentifier.isDisplayed()) {
+                    variable = false;
+                }
+            } catch (TimeoutException e) {
+                System.out.println("Elemento não encontrado, voltando uma página.");
+                driver.navigate().back();
+            }
         }
     }
 }

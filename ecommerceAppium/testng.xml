@@ -3,7 +3,7 @@
 <suite name="Department name">
     <test name="Run all methods from all classes">
         <classes>
-            <class name="ecommerceAppiumTests.AppiumProductScreenTest">
+            <class name="ecommerceAppiumTests.AppiumLoginScreenTest">
             </class>
         </classes>
     </test>
