@@ -42,13 +42,14 @@ This project is an automation for a marketplace app developed using Appium with 
 1. **Cloning the repository**:
    git clone https://github.com/adelmoGama/ecommerce-appium.git
 2. **Changing the app path**:
-   You will need change the path of the app on AppiumConnectionConfig.
+   You will need change the path app on AppiumConnectionConfig.
 3. **Runing the tests**:
-   You can run the tests just executing the testng.xml file where all classes are in.
+   You can run the tests just executing the testng.xml file where all classes are in or executing the maven command:
+  - mvn test -PRegression
 4. **Generating the allure report**:
    After the tests finished you need to get in ´target package´ and execute the command to generate the report.
    - cd target
-   - allure server
+   - allure generate -c
 5. **Some help**
    - You can have some problem when try to run your tests and when this error hapen "" you just need to execute this two commands on cmd where they will uninstall UiAutomator2 and then you can retry the execution
    - adb uninstall io.appium.uiautomator2.server
